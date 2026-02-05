@@ -1,0 +1,173 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Inter, sans-serif;
+}
+
+body {
+  background: #0b0b0b;
+  color: white;
+}
+
+/* GLOBAL */
+.container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* NAVBAR */
+.navbar {
+  padding: 25px 0;
+}
+
+.navbar-inner {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav a {
+  margin-left: 30px;
+  color: #aaa;
+  font-size: 14px;
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  padding: 90px 0;
+  text-align: center;
+  overflow: hidden;
+  background: #0b0b0b;
+}
+
+/* BULAT BESAR DI HERO */
+.hero-bg {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(255, 79, 163, 0.45),
+    rgba(255, 79, 163, 0.25),
+    rgba(255, 79, 163, 0.1),
+    transparent 70%
+  );
+
+  filter: blur(120px);
+  z-index: 1;
+}
+
+/* KONTEN HERO DI ATAS BULAT */
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
+  margin: auto;
+}
+
+/* GAMBAR / AVATAR */
+.gambar {
+  width: 120px;
+  border-radius: 50%;
+  margin-bottom: 30px;
+}
+
+.title {
+  font-size: 48px;
+  line-height: 1.2;
+}
+
+.title span {
+  background: linear-gradient(90deg, #ff7a18, #c44cff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.desc {
+  color: #aaa;
+  margin: 25px 0;
+  line-height: 1.8;
+}
+
+.actions {
+  margin-bottom: 40px;
+}
+
+.btn {
+  padding: 12px 30px;
+  border-radius: 25px;
+  margin: 0 10px;
+}
+
+.primary {
+  background: white;
+  color: black;
+}
+
+.outline {
+  border: 1px solid white;
+  background: transparent;
+  color: white;
+}
+
+/* PROJECTS */
+.projects {
+  padding: 80px 0;
+}
+
+.orange {
+  color: #ff7a18;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.card {
+  background: #111;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.card-footer {
+  padding: 20px;
+}
+
+/* EXPERIENCE */
+.experience {
+  padding: 80px 0;
+}
+
+.blue {
+  color: #4da3ff;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.job {
+  margin-bottom: 40px;
+}
+
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+/* FOOTER */
+.footer {
+  padding: 60px 0;
+  background: #080808;
+  text-align: center;
+}
