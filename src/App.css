@@ -8,17 +8,30 @@
 body {
   background: #0b0b0b;
   color: white;
+  scroll-behavior: smooth;
 }
 
-/* GLOBAL */
+/* =========================
+GLOBAL
+========================= */
+
 .container {
   max-width: 1100px;
   margin: auto;
+  padding: 0 20px;
 }
 
-/* NAVBAR */
+/* =========================
+NAVBAR
+========================= */
+
 .navbar {
   padding: 25px 0;
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(8px);
+  background: rgba(11,11,11,.6);
+  z-index: 10;
 }
 
 .navbar-inner {
@@ -30,9 +43,42 @@ body {
   margin-left: 30px;
   color: #aaa;
   font-size: 14px;
+  text-decoration: none;
+  position: relative;
+  transition: .3s;
 }
 
-/* HERO */
+/* underline modern */
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: #1ed760;
+  transform: translateX(-50%);
+  transition: width .35s ease;
+}
+
+.nav a:hover {
+  color: white;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+.nav a:active {
+  color: #1ed760;
+  text-shadow: 0 0 12px rgba(30,215,96,.7);
+  transform: scale(.95);
+}
+
+/* =========================
+HERO
+========================= */
+
 .hero {
   position: relative;
   padding: 90px 0;
@@ -41,7 +87,6 @@ body {
   background: #0b0b0b;
 }
 
-/* BULAT BESAR DI HERO */
 .hero-bg {
   position: absolute;
   width: 520px;
@@ -63,7 +108,6 @@ body {
   z-index: 1;
 }
 
-/* KONTEN HERO DI ATAS BULAT */
 .hero-inner {
   position: relative;
   z-index: 2;
@@ -71,12 +115,19 @@ body {
   margin: auto;
 }
 
-/* GAMBAR / AVATAR */
+/* avatar */
 .gambar {
   width: 120px;
   border-radius: 50%;
   margin-bottom: 30px;
+  transition: .4s;
 }
+
+.gambar:hover {
+  transform: scale(1.08);
+}
+
+/* title */
 
 .title {
   font-size: 48px;
@@ -95,19 +146,24 @@ body {
   line-height: 1.8;
 }
 
-.actions {
-  margin-bottom: 40px;
-}
+/* buttons */
 
 .btn {
   padding: 12px 30px;
   border-radius: 25px;
   margin: 0 10px;
+  transition: .3s;
+  cursor: pointer;
 }
 
 .primary {
   background: white;
   color: black;
+}
+
+.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(255,255,255,.25);
 }
 
 .outline {
@@ -116,7 +172,53 @@ body {
   color: white;
 }
 
-/* PROJECTS */
+.outline:hover {
+  background: white;
+  color: black;
+}
+
+/* =========================
+TECH STACK
+========================= */
+
+.tech-list span {
+  margin: 6px;
+  padding: 8px 14px;
+  border-radius: 20px;
+  background: #141414;
+  display: inline-block;
+  transition: .3s;
+} 
+.tech {
+  margin-top: 50px;   /* bikin turun */
+  text-align: center;
+}
+
+.tech p {
+  margin-bottom: 18px;
+  letter-spacing: 2px;
+  font-size: 12px;
+  color: #888;
+}
+
+
+
+.tech-list span:hover {
+  background: 90deg, #1ed760;
+  color: black;
+  transform: translateY(-3px);
+}
+
+/* khusus NODE hover gradient */
+.tech-list span.node:hover {
+  background: linear-gradient(90deg, #ff7a18, #c44cff);
+  color: white;
+}
+
+/* =========================
+PROJECTS
+========================= */
+
 .projects {
   padding: 80px 0;
 }
@@ -137,37 +239,432 @@ body {
   background: #111;
   border-radius: 12px;
   overflow: hidden;
+  transition: .35s;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 0 30px rgba(0,0,0,.6);
 }
 
 .card-footer {
   padding: 20px;
 }
 
-/* EXPERIENCE */
-.experience {
-  padding: 80px 0;
-}
+/* =========================
+FOOTER
+========================= */
 
-.blue {
-  color: #4da3ff;
-  text-align: center;
-  margin-bottom: 50px;
-}
-
-.job {
-  margin-bottom: 40px;
-}
-
-.job-header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-  color: #fff;
-}
-
-/* FOOTER */
 .footer {
   padding: 60px 0;
   background: #080808;
   text-align: center;
+}
+
+/* =========================
+CURSOR SPOTLIGHT (SENTER)
+========================= */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+
+  background: radial-gradient(
+  140px circle at var(--x) var(--y),
+  rgba(30,215,96,0.22),
+  transparent 65%
+);
+
+}
+
+/* =========================
+SCROLL REVEAL MODERN
+========================= */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all .9s cubic-bezier(.22,1,.36,1);
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================
+PAGE INTRO TRANSITION
+========================= */
+
+.page {
+  opacity: 0;
+  transform: translateY(30px) scale(.98);
+  filter: blur(6px);
+  transition: all 1s cubic-bezier(.22,1,.36,1);
+}
+
+.page.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+} /* =========================
+   TECH SKILL HOVER COLORS
+   (OVERRIDE ALL)
+========================= */
+
+.tech-list span {
+  margin: 6px;
+  padding: 8px 14px;
+  border-radius: 20px;
+  background: #141414;
+  display: inline-block;
+  transition: .3s;
+  color: #ccc;
+}
+
+/* base hover motion */
+.tech-list span:hover {
+  transform: translateY(-4px) scale(1.05);
+  color: #fff;
+}
+
+/* JS */
+.tech-list span.js:hover {
+  background: #E34F26;
+  box-shadow: 0 0 18px rgba(227,79,38,.45);
+}
+  
+/* NODE */
+
+ 
+  
+/* REACT */
+.tech-list span.react:hover {
+  background: linear-gradient(90deg, #61dafb, #21a1f1);
+  color: #000;
+  box-shadow: 0 0 18px rgba(97,218,251,.35);
+}
+
+/* LARAVEL */
+.tech-list span.laravel:hover {
+  background: linear-gradient(90deg, #ff2d20, #c81e1e);
+  box-shadow: 0 0 18px rgba(255,45,32,.35);
+}
+
+/* MYSQL */
+.tech-list span.mysql:hover {
+  background: linear-gradient(90deg, #00758f, #005c70);
+  box-shadow: 0 0 18px rgba(0,117,143,.35);
+}
+
+/* =========================
+   SCROLL REVEAL EFFECT
+========================= */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(60px);
+  filter: blur(6px);
+  transition: all 1s cubic-bezier(.22,1,.36,1);
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* =========================
+   CONTACT SECTION
+========================= */
+
+/* =========================
+   CONTACT — LEFT ALIGN FIX
+========================= */
+
+.footer {
+  padding: 60px 0;
+  background: #080808;
+}
+
+/* box utama */
+.contact-box {
+  max-width: 700px;
+  margin: 0;              /* penting → buang center */
+  text-align: left;
+}
+
+/* judul */
+.contact-box h3 {
+  text-align: left;
+}
+
+/* deskripsi */
+.contact-text {
+  margin-top: 12px;
+  line-height: 1.8;
+  color: #bdbdbd;
+  font-size: 15px;
+}
+
+/* email */
+.contact-email {
+  margin-top: 18px;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 500;
+}
+
+/* icon bar */
+.contact-icons {
+  margin-top: 24px;
+  display: flex;
+  gap: 28px;
+  justify-content: flex-start; /* paksa kiri */
+}
+
+/* icon */
+.contact-icons a {
+  width: 44px;
+  height: 44px;
+  color: #888;
+  transition: .3s;
+}
+
+.contact-icons svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+.contact-icons a:hover {
+  color: #1ed760;
+  transform: translateY(-4px) scale(1.15);
+}
+
+
+/* =========================
+   CONTACT — JUNIOR STYLE
+========================= */
+
+.contact-box {
+  text-align: left;
+  max-width: 700px;
+}
+
+.contact-text {
+  margin-top: 12px;
+  line-height: 1.8;
+  color: #bdbdbd;
+  font-size: 15px;
+}
+
+.contact-email {
+  margin-top: 18px;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 500;
+}
+
+.contact-icons {
+  margin-top: 24px;
+  display: flex;
+  gap: 28px;
+}
+
+.contact-icons a {
+  width: 44px;
+  height: 44px;
+  color: #888;
+  transition: .3s;
+}
+
+.contact-icons svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+.contact-icons a:hover {
+  color: #1ed760;
+  transform: translateY(-4px) scale(1.15);
+}
+
+
+
+.actions a[href$=".pdf"] {
+  text-decoration: none;
+}
+
+.actions a[href$=".github project"] {
+  text-decoration: none;
+}
+
+.btn {
+  text-decoration: none;  /* hilangkan underline */
+  border: none;           /* hilangkan border default button */
+  outline: none;          /* hilangkan outline focus */
+}
+
+/* =========================
+TECH STACK — HTML & CSS
+========================= */
+
+/* HTML hover */
+.tech-list span.html:hover {
+  background: linear-gradient(90deg, #ff7a18, #f06529); /* gradient oranye */
+  color: white; /* teks putih */
+  box-shadow: 0 0 18px rgba(240,101,41,.45); /* glow effect */
+  transform: translateY(-4px) scale(1.05); /* naik sedikit & zoom */
+}
+
+/* CSS hover */
+.tech-list span.css:hover {
+  background: linear-gradient(90deg, #1ed760, #264de4); /* hijau ke biru */
+  color: white; /* teks putih */
+  box-shadow: 0 0 18px rgba(38,77,228,.45); /* glow biru */
+  transform: translateY(-4px) scale(1.05);
+}
+
+/* =========================
+   CARD IMAGE FIX
+========================= */
+
+.card img {
+  width: 100%;            /* ambil lebar penuh card */
+  height: 200px;          /* atur tinggi konsisten semua card */
+  object-fit: cover;      /* tetap proporsional & full, crop otomatis */
+  object-position: center; /* fokus di tengah gambar */
+  display: block;         /* hilangkan gap di bawah gambar */
+  border-radius: 12px 12px 0 0; /* sudut atas mengikuti card */
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 768px) {
+  .card img {
+    height: 180px; /* sedikit lebih pendek di mobile */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .card img {
+    height: 150px; /* lebih pendek lagi di smartphone */
+  }
+}
+
+/* ===== TYPING EFFECT ===== */
+.typing {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid #1ed760;
+  animation: blink 0.7s step-end infinite alternate;
+}
+
+/* keyframes blink */
+@keyframes blink {
+  50% { border-color: transparent; }
+  100% { border-color: #1ed760; }
+}
+
+/* ===== FLOATING EFFECT UNTUK "my portfolio" ===== */
+.floating {
+  display: inline-block;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  25% { transform: translateY(-8px); }
+  50% { transform: translateY(0px); }
+  75% { transform: translateY(8px); }
+  100% { transform: translateY(0px); }
+}
+
+
+
+/* ===== TYPING EFFECT REAL ===== */
+.typing {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 0px solid #1ed760; /* kursor */
+  font-family: inherit;
+}
+
+
+/* Animasi mengetik huruf demi huruf */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* Kursor berkedip */
+@keyframes blink {
+  0%, 50%, 100% { border-color: #e6ebe8; }
+  25%, 75% { border-color: transparent; }
+}
+
+.typing {
+  animation: typing 4s steps(40) infinite;
+}
+
+
+
+/* ===== TYPING EFFECT — CURSOR DEKAT TANPA MENGUBAH TEKS ===== */
+.typing {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  font-family: inherit;
+  border-right: 2px solid #1ed760; /* cursor */
+  animation: typing 4s steps(40) infinite, blink 0.7s step-end infinite alternate;
+  /* tambahan supaya cursor dekat */
+  padding-right: 0;       /* hapus jarak ekstra */
+  box-sizing: content-box; /* pastikan border nempel ke teks */
+}
+
+.typing {
+  border-right-width: 2px; /* pastikan lebar border sesuai */
+  vertical-align: bottom;  /* cursor sejajar teks */
+}
+
+/* ===== TYPING EFFECT — CURSOR DEKAT TULISAN TANPA MERUSAK TEKS ===== */
+.typing {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  font-family: inherit;
+  border-right: 2px solid #1ed760; /* cursor */
+  box-sizing: content-box;         /* border menempel ke teks */
+  animation: typing 4s steps(40, end) infinite, blink 0.7s step-end infinite alternate;
+}
+
+/* ===== FOOTER ICONS UKURAN SAMA & RAPAT ===== */
+.contact-icons {
+  display: flex;
+  gap: 16px; /* jarak antar ikon lebih rapat */
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.contact-icons a {
+  width: 36px;   /* ukuran ikon sama */
+  height: 36px;
+  color: #888;
+  transition: 0.3s;
+}
+
+.contact-icons a svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+.contact-icons a:hover {
+  color: #1ed760;
+  transform: translateY(-2px) scale(1.1);
 }
